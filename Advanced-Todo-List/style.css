@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: 0.3s;
+}
+
+body.dark {
+    background: #222;
+    color: white;
+}
+
+.container {
+    background: white;
+    width: 100%;       /* 🔥 750px ki jagah 100% kiya */
+    max-width: 750px;  /* 🔥 taaki desktop me same design rahe */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+body.dark .container {
+    background: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#theme-toggle {
+    background: #444;
+    color: white;
+    padding: 8px 8px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    float: right;
+}
+
+body.dark #theme-toggle {
+    background: #ddd;
+    color: black;
+}
+
+.input-box {
+    margin-top: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid gray;
+}
+
+/* Due Date & Days Left */
+.due-info {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Green = upcoming */
+.due-future {
+    color: #2ECC40;
+}
+
+/* Yellow = due today */
+.due-today {
+    color: #FFDC00;
+}
+
+/* Red = overdue */
+.due-overdue {
+    color: #FF4136;
+}
+
+/* Dark mode colors */
+body.dark .due-future {
+    color: #2ECC40;
+}
+
+body.dark .due-today {
+    color: #FFDC00;
+}
+
+body.dark .due-overdue {
+    color: #FF6B6B;
+}
+
+#add-btn {
+    padding: 10px 15px;
+    background: #2ECC40;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#add-btn:hover {
+    background: #005fa3;
+}
+
+.filters {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #0074D9;
+    color: white;
+}
+
+#task-list {
+    margin-top: 20px;
+    list-style: none;
+}
+
+li {
+    background: #e6e6e6;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fade 0.3s;
+}
+
+body.dark li {
+    background: #555;
+    color: white;
+}
+
+@keyframes fade {
+    from {opacity:0; transform: translateY(10px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button.edit, button.delete {
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.edit {
+    background: #2ECC40;
+    color: white;
+}
+
+.delete {
+    background: #FF4136;
+    color: white;
+}
+
+/* ----------------------- */
+/* 📱 RESPONSIVE DESIGN   */
+/* ----------------------- */
+
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .input-box {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    #task-input,
+    #date-input,
+    #add-btn {
+        width: 100%;
+    }
+
+    #theme-toggle {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    #add-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #task-input,
+    #date-input {
+        font-size: 14px;
+    }
+}
